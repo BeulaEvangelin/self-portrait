@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ZIM -GET TO KNOW BEULA- Code Creativity</title>
+
+    <!-- zimjs.com - JavaScript Canvas Framework -->
+    <script type="module">
+      import zim from "https://zimjs.org/cdn/015/zim";
+
+      // See Docs under Frame for FIT, FILL, FULL, and TAG
+
+      const assets = [
+        "Hiii.json",
+        "https://fonts.googleapis.com/css?family=Londrina+Solid",
+      ];
+      const path = "Assets/";
+
+      new Frame(FIT, 1024, 768, light, dark, ready, assets, path);
+
+      function ready() {
+        // given F (Frame), S (Stage), W (width), H (height)
+        // put code here
+
+        const page1 = new Page(W, H, blue, pink).addTo();
+
+        //new Sprite({json:"Hiii.json"}).center(page1);
+
+        new Label({
+          text: "Hello! I'm Beula Evangelin",
+          size: 50,
+          font: "londrina solid",
+          color: yellow,
+        }).pos(0, 300, CENTER, TOP, page1);
+
+        new Label({
+          text: "Keep sliding! Getting to know me is fun ;p",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 380, CENTER, TOP, page1);
+
+        new Label({
+          text: "slide here ->",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(100, 100, RIGHT, BOTTOM, page1);
+
+        new Pic("Asset 12.png").loc(100, 250, page1);
+
+        const label = `<font color=white size=80 group=heading family=londrina solid>WELCOME ! ! !</font>`;
+        const labelWelcome = new LabelLetters({
+          label: label,
+          align: CENTER,
+          valign: "bottom",
+          letterSpacing: 10,
+        })
+          .pos(0, 100, CENTER, TOP, page1)
+          .animate({
+            props: { scale: 1.5, rotation: -10 },
+            wait: 1,
+            time: 0.7,
+            sequence: 0.05,
+            loop: true,
+            rewind: true,
+          });
+
+        const page2 = new Page(W, H, yellow, pink).addTo();
+        const label21 = new Label({
+          text: "This is me. I'm 21 years old",
+          size: 50,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 100, CENTER, TOP, page2);
+
+        const label2 = new Label({
+          text: "Click the image to see what I looked like as a 2 year old",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 160, CENTER, TOP, page2);
+
+        new Label({
+          text: "slide here ->",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(100, 100, RIGHT, BOTTOM, page2);
+
+        const pic21 = new Pic("Asset 23.png")
+          .pos(370, 200, CENTER, TOP, page2)
+          .sca(0.3);
+        pic21.on("click", remove);
+        function remove(e) {
+          e.target.removeFrom();
+          const emitter = new Emitter(new Circle(10, red)).pos(
+            500,
+            100,
+            LEFT,
+            TOP,
+            page2
+          );
+          const emitter2 = new Emitter(new Circle(10, blue)).pos(
+            500,
+            100,
+            RIGHT,
+            TOP,
+            page2
+          );
+          const emitter3 = new Emitter(new Circle(10, red)).pos(
+            500,
+            100,
+            RIGHT,
+            BOTTOM,
+            page2
+          );
+          const emitter4 = new Emitter(new Circle(10, blue)).pos(
+            500,
+            100,
+            LEFT,
+            BOTTOM,
+            page2
+          );
+          const pic2 = new Pic("Asset 22.png")
+            .pos(370, 200, CENTER, TOP, page2)
+            .sca(0.3);
+          S.update(page2);
+        }
+
+        const page3 = new Page(W, H, red, pink).addTo();
+        const labelIndia = new Label({
+          text: "I'm from India",
+          size: 50,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 50, CENTER, TOP, page3);
+        const india = new Pic("Asset 27.png")
+          .pos(400, 100, LEFT, TOP, page3)
+          .sca(0.3);
+        const squiggle = new Squiggle({
+          //interactive:false,
+          color: yellow,
+          showControls: false,
+          onTop: false,
+          points: [
+            [0, 0, 0, 0, -74.6, 39.6, 74.6, -39.6],
+            [163.8, -8.9, 0, 0, -35.5, -11.9, 35.5, 11.9],
+            [305.5, 31.3, 0, 0, -52.7, 4.5, 52.7, -4.5],
+          ],
+        })
+          .sca(1.5)
+          .pos(110, 480, LEFT, TOP, page3);
+
+        new Pic("Asset 19.png")
+          .loc(100, 100, page3)
+          .animate({
+            props: { path: squiggle, radius: 100 },
+            time: 3,
+            drag: true,
+            //rewind:true,
+            loop: true,
+            startPaused: false,
+          })
+          .sca(0.5);
+
+        new Label({
+          text: "slide here ->",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(100, 100, RIGHT, BOTTOM, page3);
+
+        const page4 = new Page(W, H, purple, pink).addTo();
+        const p4heading = new Label({
+          text: "These are some things I like to do",
+          size: 50,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 60, CENTER, TOP, page4);
+        new Pic("Asset 32.png").pos(60, 30, LEFT, TOP, page4).sca(0.15).drag();
+
+        const p4subhead = new Label({
+          text: "Try matching the activity with the image",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 110, CENTER, TOP, page4);
+
+        //const labellop1 =  `<font color=white size=80 group=heading family=londrina solid>WELCOME ! ! !</font>`
+        const lop1 = new LabelOnPath({
+          label: "CODING",
+        })
+          .pos(110, 200, LEFT, TOP, page4)
+          .sca(0.5);
+
+        new Pic("Asset 29.png").pos(500, 200, LEFT, TOP, page4).sca(0.4).drag();
+
+        const lop2 = new LabelOnPath({
+          label: "ANIMATING",
+        })
+          .pos(110, 400, LEFT, TOP, page4)
+          .sca(0.5);
+        new Pic("Asset 30.png").pos(500, 300, LEFT, TOP, page4).sca(0.4).drag();
+
+        const lop3 = new LabelOnPath({
+          label: "ILLUSTRATING",
+        })
+          .pos(110, 600, LEFT, TOP, page4)
+          .sca(0.5);
+        new Pic("Asset 31.png").pos(500, 500, LEFT, TOP, page4).sca(0.4).drag();
+
+        new Label({
+          text: "slide here ->",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(100, 100, RIGHT, BOTTOM, page4);
+
+        //const scrambler = new Scrambler(thingsido).pos(200, 200, CENTER, TOP, page4).sca(.3);
+
+        const page5 = new Page(W, H, orange, pink).addTo();
+        new Label({
+          text: "I LOVE CATS",
+          size: 70,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 100, CENTER, TOP, page5);
+        new Label({
+          text: "Help me unite with cats",
+          size: 40,
+          font: "londrina solid",
+          color: white,
+        }).pos(0, 200, CENTER, TOP, page5);
+        const button = new Button({
+          label: "STOP",
+          toggle: "START",
+          width: 390,
+          height: 110,
+          backgroundColor: yellow,
+          rollBackgroundColor: "MediumOrchid",
+          borderWidth: 6,
+          borderColor: white,
+          gradient: 0.2,
+          corner: 8,
+        }).pos(0, 300, CENTER, TOP, page5);
+        button.on("click", () => {
+          catchPic.pauseAnimate(button.toggled);
+        });
+
+        const catchPicOutline = new Pic("Asset 20.png")
+          .pos(0, 68, CENTER, BOTTOM, page5)
+          .sca(1.01);
+        const catchPic = new Pic("Asset 15.png")
+          .loc(0, H - 300, page5)
+          .animate({
+            props: { x: W - 200 },
+            time: 2.5,
+            rewind: true,
+            loop: true,
+          });
+        new Label({
+          text: "The End",
+          size: 30,
+          font: "londrina solid",
+          color: white,
+        }).pos(100, 50, RIGHT, BOTTOM, page5);
+
+        const pages = new Pages(
+          [page1, page2, page3, page4, page5],
+          "fan"
+        ).addTo();
+      } // end ready
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+  <body></body>
+</html>
